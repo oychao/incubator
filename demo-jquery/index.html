@@ -42,8 +42,8 @@
   <script src="jQuery.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
-    $('.parent').on('click', '.filter', function() {
-      alert('event delegated');
+    $('.parent').on('click', '.filter', function(e) {
+      console.log(e, this);
     })
   </script>
 </body>
