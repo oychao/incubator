@@ -42,7 +42,9 @@
   <script src="jQuery.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
-    $('.child').css('color', 'red').add('.child2').css('font-size', '22px');
+    $('.parent').on('click', '.filter', function() {
+      alert('event delegated');
+    })
   </script>
 </body>
 </html>

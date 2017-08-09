@@ -342,10 +342,21 @@
   /*event functions*/
 
   $.fn.extend({
-    on(event, callback) {
-      return this.each(function(_, elem) {
-        elem.addEventListener(event, callback, false);
-      });
+    on(event, selector, callback) {
+      if (selector && callback) {
+        return this.each(function(_, elem) {
+          elem.addEventListener(event, function(e) {
+            if ($(e.target).is(selector)) {
+              callback.call(e.target, e);
+            }
+          }, false);
+        });
+      } else {
+        callback = selector;
+        return this.each(function(_, elem) {
+          elem.addEventListener(event, callback, false);
+        });
+      }
     },
     trigger(event) {
       return this.each(function(_, elem) {
