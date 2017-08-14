@@ -148,6 +148,15 @@
       });
       return this.pushStack(domArr);
     },
+    index(elem) {
+      let idx = -1;
+      this.each(function(_idx, _elem) {
+        if (elem === _elem && idx === -1) {
+          idx = _idx;
+        }
+      });
+      return idx;
+    },
     slice() {
       return this.pushStack(Array.prototype.slice.apply(this, arguments));
     },

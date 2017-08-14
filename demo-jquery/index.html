@@ -23,7 +23,7 @@
     <input class="input" type="text" name="username">
     <div class="parent">
       <div class="child">child1</div>
-      <div class="child filter">child2</div>
+      <div id="child" class="child filter">child2</div>
       <div class="child filter">child3</div>
     </div>
     <div class="parent">
@@ -42,9 +42,7 @@
   <script src="jQuery.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
-    $('.parent').on('click', '.filter', function(e) {
-      console.log(e, this);
-    })
+    console.log($('.child').index(document.querySelector('#child')));
   </script>
 </body>
 </html>
