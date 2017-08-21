@@ -419,15 +419,13 @@
     },
     toggleClass(className) {
       return handleClass(this, className, 'toggle');
-    },
-    width() {
-      const style = getComputedStyle(this[0]);
-      return +style.width.slice(0, -2);
     }
-    height() {
+  });
+  $.each('width height'.split(' '), function(idx, prop) {
+    $.fn[prop] = function() {
       const style = getComputedStyle(this[0]);
-      return +style.height.slice(0, -2);
-    }
+      return +style[prop].slice(0, -2);
+    };
   });
 
   /*jQuery animations*/
