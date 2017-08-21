@@ -419,6 +419,10 @@
     },
     toggleClass(className) {
       return handleClass(this, className, 'toggle');
+    },
+    width() {
+      const style = getComputedStyle(this[0]);
+      return +style.width.slice(0, -2);
     }
   });
 
