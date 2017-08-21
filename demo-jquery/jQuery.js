@@ -424,6 +424,10 @@
       const style = getComputedStyle(this[0]);
       return +style.width.slice(0, -2);
     }
+    height() {
+      const style = getComputedStyle(this[0]);
+      return +style.height.slice(0, -2);
+    }
   });
 
   /*jQuery animations*/
