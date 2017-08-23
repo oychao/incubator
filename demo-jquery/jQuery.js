@@ -353,7 +353,7 @@
   $.fn.extend({
     on(event, selector, callback) {
       if (selector && callback) {
-        return this.each(function(_, elem) {
+        this.each(function(_, elem) {
           elem.addEventListener(event, function(e) {
             if ($(e.target).is(selector)) {
               callback.call(e.target, e);
@@ -362,10 +362,17 @@
         });
       } else {
         callback = selector;
-        return this.each(function(_, elem) {
+        this.each(function(_, elem) {
           elem.addEventListener(event, callback, false);
         });
       }
+      this.each(function(_, elem) {
+        elem.jQuery = {
+          callbacks: []
+        };
+        elem.jQuery.callbacks.push(callback); 
+      });
+      return this;
     },
     trigger(event) {
       return this.each(function(_, elem) {
