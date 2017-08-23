@@ -367,10 +367,9 @@
         });
       }
       this.each(function(_, elem) {
-        elem.jQuery = {
-          callbacks: []
-        };
-        elem.jQuery.callbacks.push(callback); 
+        elem.jQuery = elem.jQuery || {};
+        elem.jQuery.onCallbacks = [];
+        elem.jQuery.onCallbacks.push(callback); 
       });
       return this;
     },
