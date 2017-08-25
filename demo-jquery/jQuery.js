@@ -333,6 +333,14 @@
       }
       return this[0].value;
     },
+    html(htmlStr) {
+      if (!htmlStr) {
+        return this[0].innerHTML;
+      }
+      this.each(function(_, elem) {
+        elem.innerHTML = htmlStr;
+      });
+    },
     text(value) {
       if (!value) {
         return this[0].innerHTML;
