@@ -385,6 +385,16 @@
       });
       return this;
     },
+    off(event) {
+      this.each(function(_, elem) {
+        console.log(elem.jQuery);
+        if (elem.jQuery && elem.jQuery.onCallbacks) {
+          $.each(elem.jQuery.onCallbacks, function(_, handler) {
+            elem.removeEventListener(event, handler);
+          });
+        }
+      });
+    },
     trigger(event) {
       return this.each(function(_, elem) {
         elem.dispatchEvent(new Event(event));
