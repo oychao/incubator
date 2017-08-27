@@ -43,7 +43,9 @@
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
   <script type="text/javascript">
     console.log($('.child').html());
-    $('.child').html('hahaha');
+    $('.child').html(function(idx, oldHTMLStr) {
+      return `${idx}-${oldHTMLStr}`
+    });
   </script>
 </body>
 </html>
