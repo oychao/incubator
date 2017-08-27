@@ -337,8 +337,12 @@
       if (!htmlStr) {
         return this[0].innerHTML;
       }
-      this.each(function(_, elem) {
-        elem.innerHTML = htmlStr;
+      return this.each(function(idx, elem) {
+        if ($.isFunction(htmlStr)) {
+          elem.innerHTML = htmlStr(idx, elem.innerHTML);
+        } else if ($.isString(htmlStr)) {
+          elem.innerHTML = htmlStr;
+        }
       });
     },
     text(value) {
