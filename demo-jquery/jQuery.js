@@ -391,6 +391,7 @@
         if (elem.jQuery && elem.jQuery.callbacks && elem.jQuery.callbacks[event]) {
           $.each(elem.jQuery.callbacks[event], function(_, handler) {
             elem.removeEventListener(event, handler);
+            elem.jQuery.callbacks[event] = [];
           });
         }
       });
