@@ -380,16 +380,16 @@
       }
       this.each(function(_, elem) {
         elem.jQuery = elem.jQuery || {};
-        elem.jQuery.onCallbacks = [];
-        elem.jQuery.onCallbacks.push(callback); 
+        elem.jQuery.callbacks = elem.jQuery.callbacks || {};
+        elem.jQuery.callbacks[event] = elem.jQuery.callbacks[event] || [];
+        elem.jQuery.callbacks[event].push(callback); 
       });
       return this;
     },
     off(event) {
       this.each(function(_, elem) {
-        console.log(elem.jQuery);
-        if (elem.jQuery && elem.jQuery.onCallbacks) {
-          $.each(elem.jQuery.onCallbacks, function(_, handler) {
+        if (elem.jQuery && elem.jQuery.callbacks && elem.jQuery.callbacks[event]) {
+          $.each(elem.jQuery.callbacks[event], function(_, handler) {
             elem.removeEventListener(event, handler);
           });
         }
