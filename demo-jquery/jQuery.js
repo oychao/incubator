@@ -401,7 +401,7 @@
       });
     }
   });
-  $.each('blur focus click dblclick'.split(' '), function(idx, event) {
+  $.each('blur focus click dblclick contextmenu'.split(' '), function(idx, event) {
     $.fn[event] = function(handler) {
       if (handler) {
         this.each(function(_, elem) {

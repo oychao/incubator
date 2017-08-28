@@ -45,6 +45,10 @@
     $('.child').on('click', function(e) {
       alert($(this).html());
     });
+    $('.child').on('contextmenu', function(e) {
+      alert($(this).html());
+      e.preventDefault();
+    });
     $('.child').off('click');
   </script>
 </body>
