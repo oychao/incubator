@@ -387,7 +387,7 @@
       return this;
     },
     off(event) {
-      this.each(function(_, elem) {
+      return this.each(function(_, elem) {
         if (elem.jQuery && elem.jQuery.callbacks && elem.jQuery.callbacks[event]) {
           $.each(elem.jQuery.callbacks[event], function(_, handler) {
             elem.removeEventListener(event, handler);
