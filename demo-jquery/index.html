@@ -42,14 +42,9 @@
   <script src="./jQuery.js"></script>
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
   <script type="text/javascript">
-    $('.child').on('click', function(e) {
+    $('.child').one('click', function(e) {
       alert($(this).html());
     });
-    $('.child').on('contextmenu', function(e) {
-      alert($(this).html());
-      e.preventDefault();
-    });
-    $('.child').off('click');
   </script>
 </body>
 </html>

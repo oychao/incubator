@@ -386,6 +386,22 @@
       });
       return this;
     },
+    one(event, callback) {
+      this.each(function(_, elem) {
+        const f = function(e) {
+          callback.call(elem, e);
+          elem.removeEventListener(event, f);
+        };
+        elem.addEventListener(event, f, false);
+      });
+      this.each(function(_, elem) {
+        elem.jQuery = elem.jQuery || {};
+        elem.jQuery.callbacks = elem.jQuery.callbacks || {};
+        elem.jQuery.callbacks[event] = elem.jQuery.callbacks[event] || [];
+        elem.jQuery.callbacks[event].push(callback); 
+      });
+      return this;
+    },
     off(event) {
       return this.each(function(_, elem) {
         if (elem.jQuery && elem.jQuery.callbacks && elem.jQuery.callbacks[event]) {
