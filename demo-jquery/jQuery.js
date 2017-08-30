@@ -201,6 +201,13 @@
       const elems = Array.prototype.slice.apply(this.constructor(selector)).concat(thisElems);
       return this.pushStack(elems);
     },
+    detach(selector) {
+      const thisElems = Array.prototype.slice.apply(this);
+      elems = thisElems.filter(function(elem) {
+        return !$(elem).is(selector);
+      });
+      return this.pushStack(elems);
+    },
     is(selector) {
       let ret = false;
       if ($.isHTMLElement(selector) || selector === document) {

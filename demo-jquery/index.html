@@ -42,9 +42,7 @@
   <script src="./jQuery.js"></script>
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
   <script type="text/javascript">
-    $('.child').one('click', function(e) {
-      alert($(this).html());
-    });
+    $('.child').css('color', 'red').detach('.filter').css('color', 'gold');
   </script>
 </body>
 </html>
