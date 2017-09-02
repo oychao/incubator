@@ -11,6 +11,13 @@
   </div>
   <script>
     console.log('test');
+    fetch('data', { method: 'get' })
+      .then(res => res.text())
+      .then(function(data) {
+        console.log(data);
+      }).catch(function(err) {
+        console.log(err);
+      });
   </script>
 </body>
 </html>

@@ -4,7 +4,7 @@ const app = express();
 app.use(express.static(__dirname + '/html'));
 
 app.get('/data', function(req, res) {
-  res.send('hello world');
+  res.send('hello fetch');
 });
 
 app.listen(3000, function() {
