@@ -6,9 +6,10 @@
   <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-  <div>{{ message }}</div>
+  <div id="app">{{ message }}</div>
   <script>
-    const app = new ({
+    debugger;
+    const app = new Vue({
       el: '#app',
       data: {
         message: 'Hello Vue!'
