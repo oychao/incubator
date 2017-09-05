@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>HelloWeb</display-name>
+	<!-- 默认访问文件 -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<!-- 创建Servlet的3种方式 -->
+	<!-- 容器初始化时，servlet默认不初始化，如果设置了load-on-startup则容器启动时初始化 -->
+	<servlet>
+		<servlet-name>HelloServlet1</servlet-name>
+		<servlet-class>cn.sxt.servlet.HelloServlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet1</servlet-name>
+		<url-pattern>/servlet1</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>HelloServlet2</servlet-name>
+		<servlet-class>cn.sxt.servlet.HelloServlet2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet2</servlet-name>
+		<url-pattern>/servlet2</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>HelloServlet3</servlet-name>
+		<servlet-class>cn.sxt.servlet.HelloServlet3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet3</servlet-name>
+		<url-pattern>/servlet3</url-pattern>
+	</servlet-mapping>
+	<!-- 创建Filter -->
+	<!-- filter的执行顺序按照配置的filter-mapping执行 -->
+	<!-- filter1 -> filter2 -> servlet -> filter2 -> filter1 -->
+	<filter>
+		<filter-name>HelloFilter1</filter-name>
+		<filter-class>cn.sxt.filter.HelloFilter1</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HelloFilter1</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>HelloFilter2</filter-name>
+		<filter-class>cn.sxt.filter.HelloFilter2</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HelloFilter2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 创建Listener -->
+	<listener>
+		<listener-class>cn.sxt.listener.HelloContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>cn.sxt.listener.HelloSessionListener</listener-class>
+	</listener>
+</web-app>
