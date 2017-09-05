@@ -1,0 +1,39 @@
+import { createContainer } from 'meteor/react-meteor-data';
+import React from 'react';
+import { PropTypes } from 'prop-types';
+
+import { Tasks } from '../api/tasks';
+
+import Task from './Task';
+
+class App extends React.Component {
+  renderTasks() {
+    return this.props.tasks.map(task => (
+      <Task key={task._id} task={task} />
+    ));
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <header>
+          <h1>Todo List</h1>
+        </header>
+        <ul>
+          {this.renderTasks()}
+        </ul>
+      </div>
+    );
+  }
+}
+
+App.propTypes = {
+  tasks: PropTypes.array.isRequired
+};
+
+export default createContainer(() => {
+  return {
+    tasks: Tasks.find({}).fetch()
+  };
+}, App);
+
