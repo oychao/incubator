@@ -1,10 +1,12 @@
 import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
 import { Tasks } from '../api/tasks';
 
 import Task from './Task';
+import AccountsUIWrapper from './AccountsUIWrapper';
 
 class App extends React.Component {
   constructor() {
@@ -28,7 +30,9 @@ class App extends React.Component {
     event.preventDefault();
     Tasks.insert({
       text: this.state.val,
-      createdAt: new Date()
+      createdAt: new Date(),
+      owner: Meteor.userId(),
+      username: Meteor.user().username
     });
     this.setState({
       val: ''
@@ -56,15 +60,20 @@ class App extends React.Component {
       <div className="container">
         <header>
           <h1>Todo List ({this.props.incompleteCount})</h1>
+          <AccountsUIWrapper/>
           <label className="hide-completed">
             <input type="checkbox" readOnly checked={this.state.hideCompleted}
               onClick={this.toggleHideCompleted}/>
             Hide Completed Tasks
           </label>
-          <form className="new-task" onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="Type to add new tasks"
-              value={this.state.val} onChange={this.handleChange}/>
-          </form>
+          {
+            this.props.currentUser ?
+            <form className="new-task" onSubmit={this.handleSubmit}>
+              <input type="text" placeholder="Type to add new tasks"
+                value={this.state.val} onChange={this.handleChange}/>
+            </form>
+            : ''
+          }
         </header>
         <ul>
           {this.renderTasks()}
@@ -76,13 +85,15 @@ class App extends React.Component {
 
 App.propTypes = {
   tasks: PropTypes.array.isRequired,
-  incompleteCount: PropTypes.number.isRequired
+  incompleteCount: PropTypes.number.isRequired,
+  currentUser: PropTypes.object
 };
 
 export default createContainer(() => {
   return {
     tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
-    incompleteCount: Tasks.find({ checked: { $ne: true } }).count()
+    incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
+    currentUser: Meteor.user()
   };
 }, App);
 
