@@ -10,10 +10,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      val: ''
+      val: '',
+      hideCompleted: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleHideCompleted = this.toggleHideCompleted.bind(this);
   }
 
   handleChange(event) {
@@ -33,8 +35,18 @@ class App extends React.Component {
     });
   }
 
+  toggleHideCompleted() {
+    const hideCompleted = !this.state.hideCompleted;
+    this.setState({
+      hideCompleted
+    });
+  }
+
   renderTasks() {
-    return this.props.tasks.map(task => (
+    const tasks = this.props.tasks.filter(task => {
+      return !this.state.hideCompleted || !task.checked;
+    });
+    return tasks.map(task => (
       <Task key={task._id} task={task} />
     ));
   }
@@ -44,6 +56,11 @@ class App extends React.Component {
       <div className="container">
         <header>
           <h1>Todo List</h1>
+          <label className="hide-completed">
+            <input type="checkbox" readOnly checked={this.state.hideCompleted}
+              onClick={this.toggleHideCompleted}/>
+            Hide Completed Tasks
+          </label>
           <form className="new-task" onSubmit={this.handleSubmit}>
             <input type="text" placeholder="Type to add new tasks"
               value={this.state.val} onChange={this.handleChange}/>
