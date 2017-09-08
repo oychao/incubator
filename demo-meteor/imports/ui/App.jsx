@@ -28,12 +28,7 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    Tasks.insert({
-      text: this.state.val,
-      createdAt: new Date(),
-      owner: Meteor.userId(),
-      username: Meteor.user().username
-    });
+    Meteor.call('tasks.insert', this.state.val);
     this.setState({
       val: ''
     });

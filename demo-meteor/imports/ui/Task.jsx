@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { PropTypes } from 'prop-types';
 
 import { Tasks } from '../api/tasks';
@@ -11,13 +12,12 @@ class Task extends React.Component {
   }
 
   toggleChecked() {
-    Tasks.update(this.props.task._id, {
-      $set: { checked: !this.props.task.checked }
-    });
+    const { _id, checked } = this.props.task;
+    Meteor.call('tasks.setChecked', _id, !checked);
   }
 
   deleteThisTask() {
-    Tasks.remove(this.props.task._id);
+    Meteor.call('tasks.remove', this.prosp.task._id);
   }
 
   render() {
