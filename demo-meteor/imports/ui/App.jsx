@@ -39,7 +39,7 @@ class App extends React.Component {
     this.setState({
       hideCompleted
     });
-    return filteredTasks.map((task) => {
+    return this.props.tasks.map((task) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
       const showPrivateButton = task.owner === currentUserId;
 
