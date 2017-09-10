@@ -19,16 +19,17 @@ class Task extends React.Component {
   }
 
   deleteThisTask() {
-    Meteor.call('tasks.remove', this.prosp.task._id);
+    Meteor.call('tasks.remove', this.props.task._id);
   }
 
   togglePrivate() {
-    Meteor.call('task.setPrivate', this.props.task._id, !this.props.task.private);
+    Meteor.call('tasks.setPrivate', this.props.task._id, !this.props.task.private);
   }
 
   render() {
+    const checked = !!this.props.task.checked;
     const taskClassName = classnames({
-      checked: !!this.props.task.checked,
+      checked: checked,
       private: !!this.props.task.private
     });
     return (

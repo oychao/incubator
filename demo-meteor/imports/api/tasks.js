@@ -15,7 +15,7 @@ if (Meteor.isServer) {
         owner: this.userId
       }]
     });
-  })
+  });
 }
 
 Meteor.methods({
@@ -32,13 +32,21 @@ Meteor.methods({
       username: Meteor.user().username
     });
   },
-  'task.remove'(taskId) {
+  'tasks.remove'(taskId) {
     check(taskId, String);
+    const task = Tasks.findOne(taskId);
+    if (task.private && task.owner !== Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
     Tasks.remove(taskId);
   },
-  'task.setChecked'(taskId, setChecked) {
+  'tasks.setChecked'(taskId, setChecked) {
     check(taskId, String);
     check(setChecked, Boolean);
+    const task = Tasks.findOne(taskId);
+    if (task.private && task.owner !== Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
     Tasks.update(taskId, {
       $set: {
         checked: setChecked
@@ -54,7 +62,7 @@ Meteor.methods({
     }
     Tasks.update(taskId, {
       $set: {
-        private: setPrivate
+        private: setToPrivate
       }
     });
   }

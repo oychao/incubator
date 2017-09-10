@@ -39,6 +39,17 @@ class App extends React.Component {
     this.setState({
       hideCompleted
     });
+    return filteredTasks.map((task) => {
+      const currentUserId = this.props.currentUser && this.props.currentUser._id;
+      const showPrivateButton = task.owner === currentUserId;
+
+      return (
+        <Task
+          key={task._id}
+          task={task}
+          showPrivateButton={showPrivateButton}/>
+      );
+    });
   }
 
   renderTasks() {
@@ -50,7 +61,7 @@ class App extends React.Component {
       const showPrivateButton = task.owner === currentUserId;
       return (
         <Task key={task._id} task={task} showPrivateButton={showPrivateButton} />
-      ) 
+      ); 
     });
   }
 
@@ -61,8 +72,8 @@ class App extends React.Component {
           <h1>Todo List ({this.props.incompleteCount})</h1>
           <AccountsUIWrapper/>
           <label className="hide-completed">
-            <input type="checkbox" readOnly checked={this.state.hideCompleted}
-              onClick={this.toggleHideCompleted}/>
+          <input type="checkbox" readOnly checked={this.state.hideCompleted}
+            onClick={this.toggleHideCompleted}/>
             Hide Completed Tasks
           </label>
           {
