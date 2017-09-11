@@ -6,6 +6,11 @@ import classnames from 'classnames';
 import { Tasks } from '../api/tasks';
 
 class Task extends React.Component {
+  static propTypes = {
+    task: PropTypes.object.isRequired,
+    showPrivateButton: PropTypes.bool.isRequired
+  };
+  
   constructor() {
     super();
     this.toggleChecked = this.toggleChecked.bind(this);
@@ -52,10 +57,5 @@ class Task extends React.Component {
     );
   }
 }
-
-Task.propTypes = {
-  task: PropTypes.object.isRequired,
-  showPrivateButton: PropTypes.bool.isRequired
-};
 
 export default Task;

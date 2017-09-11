@@ -9,6 +9,12 @@ import Task from './Task';
 import AccountsUIWrapper from './AccountsUIWrapper';
 
 class App extends React.Component {
+  static propTypes = {
+    tasks: PropTypes.array.isRequired,
+    incompleteCount: PropTypes.number.isRequired,
+    currentUser: PropTypes.object
+  };
+
   constructor() {
     super();
     this.state = {
@@ -92,12 +98,6 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  tasks: PropTypes.array.isRequired,
-  incompleteCount: PropTypes.number.isRequired,
-  currentUser: PropTypes.object
-};
 
 export default createContainer(() => {
   Meteor.subscribe('tasks');
