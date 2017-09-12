@@ -10,7 +10,7 @@ class Task extends React.Component {
     task: PropTypes.object.isRequired,
     showPrivateButton: PropTypes.bool.isRequired
   };
-  
+
   constructor() {
     super();
     this.toggleChecked = this.toggleChecked.bind(this);

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @-webkit-viewport{width:device-width}
+    @-moz-viewport{width:device-width}
+    @-ms-viewport{width:device-width}
+    @-o-viewport{width:device-width}
+    @viewport{width:device-width}
+    body {
+      background-color: tomato;
+      color: white;
+      font-family: CPMono_v07;
+    }
+    input {
+      font-size: 1.2em;
+      background-color: transparent;
+      border: none;
+      border-bottom: thick solid darkblue;
+      color: whitesmoke;
+      outline: none;
+      text-transform: uppercase;
+    }
+  </style>
+  <title>websocket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <h1>Chat via
+    <em>WebSocket [ws]</em>
+  </h1>
+  <div id="message-div"></div>
+  <input id="message-input" type="text" placeholder="your message">
+  <input id="send-button" type="button" value="Send">
+
+  <script type="text/javascript">
+    var output = document.getElementById("message-div");
+    function init() {
+      var websocket = new WebSocket("ws://localhost:3000/");
+      websocket.onopen = function(evt) {
+        log("= CONNECTED =");
+      };
+      websocket.onclose = function(evt) {
+        log("= CLOSED =");
+      };
+      websocket.onmessage = function(evt) {
+        log("MSG:" + evt.data);
+      };
+      websocket.onerror = function(evt) {
+        log("ERR: " + evt.data);
+      };
+      document.getElementById("send-button").addEventListener("click", function() {
+        var messageIpunt = document.getElementById("message-input");
+        websocket.send(messageIpunt.value || "N/A");
+        messageIpunt.value = "";
+      }, false);
+    }
+    function log(message) {
+      var pre = document.createElement("p");
+      pre.innerHTML = message;
+      output.appendChild(pre);
+    }
+    window.addEventListener("load", init, false);
+  </script>
+</body>
+
+</html>
