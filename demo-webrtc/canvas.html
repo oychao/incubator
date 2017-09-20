@@ -9,6 +9,9 @@
   <button id="btnTakeSnapshot">take snapshot</button>
   <canvas id="domCanvas"></canvas>
   <script type="text/javascript">
+    // 小错误总结
+    // 1. 方法名记错，应该是getUserMedia
+    // 2. 注意video标签的高宽分别是videoWidth和videoHeight
     navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then(s => domRtcApp.srcObject = s).catch(e => e);
     btnTakeSnapshot.addEventListener('click', function(e) {
       domCanvas.width = domRtcApp.videoWidth;
