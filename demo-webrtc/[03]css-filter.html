@@ -4,17 +4,22 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <style type="text/css">
-    .sepia {
-      filter: sepia(.8);
-    }
+    .sepia { filter: sepia(.8); }
+    .blur { filter: blur(2px);  }
+    .grayscale { filter: grayscale(.8); }
   </style>
 </head>
 <body>
   <video id="domRtcApp" autoplay></video>
-  <input id="domSepia" type="checkbox"><label for="sepia">sepia</label>
+  <select id="domFilter">
+    <option value="none">none</option>
+    <option value="sepia">sepia</option>
+    <option value="blur">blur</option>
+    <option value="grayscale">grayscale</option>
+  </select>
   <script type="text/javascript">
     navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then(s => domRtcApp.srcObject = s).catch(e => e);
-    domSepia.addEventListener('change', e => domRtcApp.classList.toggle('sepia'));
+    domFilter.addEventListener('change', e => domRtcApp.className = domFilter.value);
   </script>
 </body>
 </html>
