@@ -6,16 +6,35 @@
 </head>
 <body>
   <video id="videoRecord" autoplay></video>
-  <button id="btnRecord"></button>
+  <button id="btnRecord">record</button>
+  <button id="btnDownload">download</button>
   <script type="text/javascript">
     const constraint = { audio: false, video: true };
     const videoRecord = document.querySelector('#videoRecord');
+    const btnRecord = document.querySelector('#btnRecord');
+    const btnDownload = document.querySelector('#btnDownload');
     let isRecording = false;
 
     navigator.mediaDevices.getUserMedia(constraint).then(s => videoRecord.srcObject = s).catch(e => e);
     btnRecord.addEventListener('click', function(e) {
-
       isRecording = !isRecording;
+    });
+
+    btnDownload.addEventListener('click', function(e) {
+      const blob = new Blob(['foo', 'bar'], {
+        type: 'plain/text'
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'test.txt';
+      document.body.append(a);
+      a.click();
+      setTimeout(function() {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 0);
     });
   </script>
 </body>
