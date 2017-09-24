@@ -393,7 +393,7 @@
       });
       return this;
     },
-    one(event, callback) {
+    one(event, selector, callback) {
       this.each(function(_, elem) {
         const f = function(e) {
           callback.call(elem, e);
