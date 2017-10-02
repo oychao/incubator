@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id=title></h1>
+  <script type="text/javascript">
+    // 犯错点：
+    // 误将fetch函数的第二个参数当成回调函数，实际上第二个参数应该是请求的相关设置
+    fetch('data', { method: 'get' })
+      .then(res => res.text())
+      .then(text => title.textContent = text)
+      .catch(e => console.log(e));
+    fetch('http://localhost:3000', { method: 'get' })
+      .then(res => res.text())
+      .then(json => console.log(json))
+      .catch(e => console.log(e));
+  </script>
+</body>
+</html>
