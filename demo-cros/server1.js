@@ -2,15 +2,14 @@ const express = require('express');
 
 const app = express();
 
-const obj = {
-  foo: 'foo',
-  bar: 'bar'
-};
+// Access-Control-Allow-Origin *
+// Access-Control-Allow-Headers X-Requested-With
 
 app.get('/', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.send(obj);
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  console.log('visited');
+  res.send('Message from server1(port 3000)');
 });
 
 app.listen(3000, () => {

@@ -9,13 +9,9 @@
   <script type="text/javascript">
     // 犯错点：
     // 误将fetch函数的第二个参数当成回调函数，实际上第二个参数应该是请求的相关设置
-    fetch('data', { method: 'get' })
-      .then(res => res.text())
-      .then(text => title.textContent = text)
-      .catch(e => console.log(e));
     fetch('http://localhost:3000', { method: 'get' })
       .then(res => res.text())
-      .then(json => console.log(json))
+      .then(text => title.textContent = text)
       .catch(e => console.log(e));
   </script>
 </body>
