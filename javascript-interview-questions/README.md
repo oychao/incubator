@@ -647,6 +647,7 @@ const foo = getInstance();
 const bar = getInstance();
 console.log(foo === bar); // true
 ```
+
 ### 27.关于jQuery的用法，以下写法有什么区别
 
 ```javascript
@@ -655,3 +656,22 @@ new $('#box');
 ```
 
 在jQuery的入口函数中，会显示地返回一个通过new关键字创建的新的$.fn.init对象，而上面的第二种写法虽然一般情况下会创建新的对象（即利用this创建新的对象），但是如果遇到显示的return，则会返回return后面的值。
+
+### 28.实现以下形式的函数嵌套调用转换
+
+```javascript
+a(b(c(d(args))));
+// -->
+compose(a, b, c, d)(args);
+```
+
+这道题目是我看redux源码的时候，想起函数柯里化（compose和函数柯里化没有关系）也对函数的调用进行了变形转换，觉得这个也可以作为一道面试题，如果面试者有用过redux，应该会熟悉compose函数，compose的功能如上，但是它的实现却非常简洁优雅。
+
+```javascript
+const compose = function() {
+  const funcs = Array.from(arguments);
+  return funcs.reduce((a, b) => (...args) => a(b(...args)));
+};
+```
+
+该函数利用了数组的reduce方法，实现了函数嵌套调用的功能。

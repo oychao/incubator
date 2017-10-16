@@ -1,20 +1,20 @@
-import _ from 'lodash';
+import $ from 'jquery';
 import printMe from './print.js';
-import './style.css';
 
-function component() {
+const component = function() {
   const element = document.createElement('div');
   const btn = document.createElement('button');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.innerHTML = 'Hello World';
   
-  btn.innerHTML = 'Click me and check the console!';
+  $(btn).html('Click me and check the console!');
   btn.onclick = printMe;
 
   element.appendChild(btn);
 
-  element.classList.add('hello');
   return element;
 }
 
 document.body.appendChild(component());
+
+export default component;

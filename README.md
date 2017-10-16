@@ -27,11 +27,11 @@
 - **[demo-redux](https://github.com/oychao/incubator/tree/master/demo-redux)** Redux和Redux-Observable示例。
 - **[demo-spider](https://github.com/oychao.incubator/tree/master/demo-spider)** Python爬虫基本示例。
 - **[demo-vue](https://github.com/oychao.incubator/tree/master/demo-vue)** VueJS基本示例。
-- **[demo-pattern](https://github.com/oychao.incubator/tree/master/demo-pattern)** JavaScript设计模式基本实例。
+- **[demo-webpack](https://github.com/oychao.incubator/tree/master/demo-webpack)** Webpack基本示例。
+- **[demo-pattern](https://github.com/oychao.incubator/tree/master/demo-pattern)** JavaScript设计模式基本示例。
 - **[javascript-interview-questions](https://github.com/oychao/incubator/tree/master/javascript-interview-questions)** JavaScript面试题目。
 - **[nginx-config](https://github.com/oychao/incubator/tree/master/nginx-config)** Nginx基本配置。
 - demo-immutable 已移除。
 - demo-functional-progamming 已移除。
 - demo-mocker 已移除。
 - demo-gulp 已移除。
-- demo-webpack 已移除。

@@ -1,3 +1,5 @@
-export default function printMe() {
-  console.log('I get called from print.js, watching.');
-}
+const print = function() {
+  console.log('I get called from print.jsw.');
+};
+
+export default print;
