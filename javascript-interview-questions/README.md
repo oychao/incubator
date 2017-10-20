@@ -1,4 +1,4 @@
-# 26道JavaScript必备面试题
+# 28道JavaScript必备面试题
 
 **参考：[25 Essential JavaScript Interview Questions](https://www.toptal.com/javascript/interview-questions)**
 
