@@ -14,6 +14,13 @@ class Person {
 interface Calculatable {
   add: (a: number, b: number) => number;
 }
-class Student extends Person implements Calculatable {
+interface Thinkable {
+  think: () => void;
+}
+class Student extends Person implements Calculatable, Thinkable {
+  constructor(name: string, age: number) {
+    super(name, age);
+  }
   add(a: number, b: number) { return a + b; }
+  think() { console.log('I exist'); }
 }

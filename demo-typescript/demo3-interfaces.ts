@@ -19,13 +19,6 @@ function f6(arg1: IPerson): void {
 }
 f6(p);
 /**
- * 接口和数组一起使用
- */
-interface IArray1 {
-  [index: number]: string
-}
-const arr1: IArray1 = ['hello', 'ts'];
-/**
  * 接口的继承
  */
 interface I1 {
