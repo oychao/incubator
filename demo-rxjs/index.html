@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    html,body {
+      margin: 0px;
+      padding: 0px;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.5.0/Rx.min.js" refer></script>
+  <script type="text/javascript">
+    Rx.Observable.fromEvent(document.body, 'mousemove')
+      .throttleTime(200)
+      .subscribe(e => { console.log(e, this) });
+  </script>
+</body>
+</html>
