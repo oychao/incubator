@@ -1,0 +1,13 @@
+// 单位运算以最左边的显示单位为准 left: 10px + 20%; --> left: 30px;
+// 如无单位则输出无单位，left: 10 + 20; --> left: 30;
+@color: green;
+@base: 10%;
+#title {
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  color: @color + #111;
+  position: relative;
+  left: 10px + @base;
+  top: @base + 1px;
+}
