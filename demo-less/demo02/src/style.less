@@ -1,0 +1,17 @@
+@color1: gold;
+@color2: skyblue;
+
+#box() {
+  height: 100px;
+  width: 100px;
+}
+
+#box1 {
+  #box;
+  background-color: @color1;
+}
+
+#box2 {
+  #box;
+  background-color: @color2;
+}
