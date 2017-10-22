@@ -1,0 +1,20 @@
+@color: red;
+#box {
+  color: @color;
+  float: left;
+  position: relative;
+  animation: test-ani 2s;
+  background-color: blue;
+  @media screen and (min-width: 900px) {
+    background-color: green;
+  }
+}
+
+@keyframes test-ani {
+  from {
+    left: 0px;
+  }
+  to {
+    left: 100px;
+  }
+}
