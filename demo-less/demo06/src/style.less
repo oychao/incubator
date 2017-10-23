@@ -1,0 +1,19 @@
+.place-holder(@color) {
+  :-ms-input-placeholder {
+    color: @color;
+  }
+  ::-webkit-input-placeholder {
+    color: @color;
+  }
+  :-moz-placeholder {
+    color: @color;
+  }
+  ::-moz-placeholder {
+    color: @color;
+  }
+}
+
+.place-holder(purple);
+input {
+  caret-color: yellowgreen;
+}
