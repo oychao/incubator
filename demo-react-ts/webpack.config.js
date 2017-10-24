@@ -1,8 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -33,10 +35,19 @@ module.exports = {
       }]
     }]
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Hello World'
-    })
+      title: 'Hello World',
+      template: path.resolve(__dirname, 'index.html')
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer'
+    }),
+    new CleanWebpackPlugin(path.resolve(__dirname, 'dist'))
   ],
   devtool: 'source-map',
   devServer: {
