@@ -9,8 +9,8 @@ class GameBoard extends React.Component<IGameBoardProps, {}> {
   public static defaultProps: Partial<IGameBoardProps> = {
     result: ''
   }
-  constructor(props: any) {
-    super();
+  constructor(props: IGameBoardProps) {
+    super(props);
   }
   render(): JSX.Element {
     return (
@@ -19,7 +19,7 @@ class GameBoard extends React.Component<IGameBoardProps, {}> {
           {this.props.status.map((ele, idx) => <Square.view key={idx} id={idx} status={ele} handleClick={this.props.handleClick} />)}
         </div>
         <div>
-          <InfoBoard.view result={this.props.result} />
+          <InfoBoard.view result={this.props.result} resetStatus={this.props.resetStatus} />
         </div>
       </div>
     );
@@ -35,6 +35,7 @@ class GameBoardContainer extends React.Component<{}, IGameBoardContainerProps> {
       status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
     };
     this.handleClick = this.handleClick.bind(this);
+    this.resetStatus = this.resetStatus.bind(this);
   }
   handleClick(id: number): void {
     if (this.state.result !== '') {
@@ -62,8 +63,15 @@ class GameBoardContainer extends React.Component<{}, IGameBoardContainerProps> {
     }
     return 0;
   }
+  resetStatus(): void {
+    this.setState({
+      curPlayer: 1,
+      result: '',
+      status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    });
+  }
   render() {
-    return <GameBoard result={this.state.result} status={this.state.status} handleClick={this.handleClick} />
+    return <GameBoard result={this.state.result} status={this.state.status} handleClick={this.handleClick} resetStatus={this.resetStatus} />
   }
   componentDidUpdate() {
     const winner = this.checkResult();

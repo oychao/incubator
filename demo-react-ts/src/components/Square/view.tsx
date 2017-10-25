@@ -3,8 +3,8 @@ import * as React from 'react';
 import './style';
 
 class Square extends React.Component<ISquareProps, {}> {
-  constructor(props: any) {
-    super();
+  constructor(props: ISquareProps) {
+    super(props);
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(e: object) {
