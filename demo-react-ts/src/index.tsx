@@ -1,10 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 import GameBoard from 'comps/GameBoard';
 import 'style/global';
 
 ReactDOM.render(
-  <div>
+  <Provider store={store}>
     <GameBoard.view />
-  </div>, document.querySelector('#app')
+  </Provider>
+  , document.querySelector('#app')
 );

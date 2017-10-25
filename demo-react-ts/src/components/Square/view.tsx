@@ -5,22 +5,22 @@ import './style';
 class Square extends React.Component<ISquareProps, {}> {
   constructor(props: ISquareProps) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleMove = this.handleMove.bind(this);
   }
-  handleClick(e: object) {
+  handleMove(e: object): void {
     if (this.props.status !== 0) {
       return;
     }
-    this.props.handleClick(this.props.id);
+    this.props.handleMove(this.props.id);
   }
-  render() {
+  render(): JSX.Element {
     let piece: string = '';
     if (this.props.status === 1) {
       piece = 'O';
     } else if (this.props.status === 2) {
       piece = 'X';
     }
-    return (<div className='square' onClick={this.handleClick}>{piece}</div>);
+    return (<div className='square' onClick={this.handleMove}>{piece}</div>);
   }
 }
 

@@ -5,11 +5,11 @@ class InfoBoard extends React.Component<IInfoBoardProps, {}> {
   constructor(props: IInfoBoardProps) {
     super(props);
   }
-  render() {
+  render(): JSX.Element {
     return (
       <div>
+        <button onClick={this.props.handleRestart}>Restart</button>
         <h2>{this.props.result}</h2>
-        <button onClick={this.props.resetStatus}>Restart</button>
       </div>
     );
   }
