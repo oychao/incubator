@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import Profile from './components/Profile';
-import Hello from './components/Hello';
+import GameBoard from 'comps/GameBoard';
 
 ReactDOM.render(
   <div>
-    <Hello msg='hello world' />
-    <Profile username='my name is Ouyang' />
+    <GameBoard.view result='X wins' status={[]} />
   </div>, document.querySelector('#app')
 );
