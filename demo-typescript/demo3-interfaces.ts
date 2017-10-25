@@ -19,6 +19,15 @@ function f6(arg1: IPerson): void {
 }
 f6(p);
 /**
+ * 定义枚举类型
+ */
+interface Enum {
+  state: '' | 'X Wins!' | 'O Wins!'
+}
+const o: Enum = {
+  state: 'X Wins!'
+};
+/**
  * 接口的继承
  */
 interface I1 {
