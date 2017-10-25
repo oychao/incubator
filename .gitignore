@@ -12,3 +12,4 @@ demo-jersey/target
 demo-jersey/demo-jersey.iml
 __pycache__
 yarn.lock
+yarn-error.log
