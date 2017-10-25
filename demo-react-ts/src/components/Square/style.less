@@ -1,8 +1,12 @@
-@size: 20px;
+@import '~style/variables';
 .square {
   float: left;
-  width: 20px;
-  height: 20px;
+  font-size: 30px;
+  width: @square-size - 2 * @border-width;
+  height: @square-size - 2 * @border-width;
   font-weight: bold;
-  border: 2px solid;
+  border-width: @border-width;
+  border-style: solid;
+  line-height: @square-size;
+  text-align: center;
 }
