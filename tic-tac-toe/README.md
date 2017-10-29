@@ -1,5 +1,4 @@
 # Tic-Tac-Toe
-===
 
 A implmentation of Tic-Tac-Toe for two players.
 

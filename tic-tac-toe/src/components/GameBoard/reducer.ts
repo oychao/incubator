@@ -8,7 +8,7 @@ export default (state: IGameBoardReduxState = {
   result: '',
   status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
 }, action: IAction) => {
-  const newState = Object.assign({}, state);
+  const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
     case actions.MOVE:
       newState.status[action.payload] = newState.curPlayer;
