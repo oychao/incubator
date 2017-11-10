@@ -9,26 +9,38 @@ console.disableYellowBox = true;
 
 export default class App extends React.Component {
   state = {
-    curNumber: 0
+    formula: ''
   };
   constructor(props) {
     super(props);
+    this.handlePendingFormula = this.handlePendingFormula.bind(this);
+    this.handleResetFormula = this.handleResetFormula.bind(this);
+  }
+  handlePendingFormula(str) {
+    this.setState({
+      formula: this.state.formula + str
+    });
+  }
+  handleResetFormula() {
+    this.setState({
+      formula: ''
+    });
   }
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.resultBoard}>
-          <ResultBoard.view />
+          <ResultBoard.view formula={this.state.formula} />
         </View>
         <View style={styles.recordBoard}>
           <RecordBoard.view />
         </View>
         <View style={styles.btnBoard}>
           <View style={styles.numberBtns}>
-            <CtrBtns.view />
+            <NumberBtns.view onBtnPress={this.handlePendingFormula} />
           </View>
           <View style={styles.ctrBtns}>
-            <NumberBtns.view />
+            <CtrBtns.view onResetBtnPress={this.handleResetFormula} />
           </View>
         </View>
       </View>
@@ -45,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   resultBoard: {
-    flex: 2,
+    flex: 3,
     width: '100%'
   },
   recordBoard: {
@@ -53,17 +65,17 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   btnBoard: {
-    flex: 4,
+    flex: 6,
     flexDirection: 'column',
     width: '100%',
     backgroundColor: 'white'
   },
   numberBtns: {
     flex: 2,
-    width:'100%'
+    width: '100%'
   },
   ctrBtns: {
     flex: 1,
-    width:'100%'
+    width: '100%'
   }
 });
