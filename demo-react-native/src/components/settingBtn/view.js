@@ -7,7 +7,7 @@ class NumberBtn extends React.PureComponent {
     this.handlePress = this.handlePress.bind(this);
   }
   handlePress() {
-    this.props.onResetBtnPress();
+    this.props.onBtnPress(true);
   }
   render() {
     return (

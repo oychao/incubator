@@ -7,7 +7,7 @@ class CalcBtn extends React.PureComponent {
     this.handlePress = this.handlePress.bind(this);
   }
   handlePress() {
-    // this.props.onBtnPress(this.props.value)
+    this.props.onUpdateOperator(this.props.operator);
   }
   render() {
     return (

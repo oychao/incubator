@@ -6,10 +6,11 @@ class ResultBoard extends React.PureComponent {
     super(props);
   }
   render() {
-    const formula = this.props.formula === '' ? '0' : this.props.formula;
+    let { number } = this.props;
+    number = number === null ? '0' : number;
     return (
       <View style={styles.index}>
-        <Text style={styles.text}>{formula}</Text>
+        <Text style={styles.text}>{number}</Text>
       </View>
     );
   }

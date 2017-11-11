@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import NumberBtn from '../numberBtn';
+import NumberBtn from '../NumberBtn';
 
 class NumberBtns extends React.PureComponent {
   constructor(props) {
