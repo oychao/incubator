@@ -7,6 +7,10 @@ app.get('/data', function(req, res) {
   res.send('hello fetch');
 });
 
+app.post('/data', function(req, res) {
+  console.log(req.params);
+});
+
 app.listen(3000, function() {
   console.log('server started on port 3000');
 });

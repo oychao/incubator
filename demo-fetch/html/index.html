@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title></title>
 </head>
+
 <body>
   <div>
     <h1>Fetch Demo</h1>
     <hr>
   </div>
   <script>
-    console.log('test');
-    fetch('data', { method: 'get' })
-      .then(res => res.text())
-      .then(function(data) {
-        console.log(data);
-      }).catch(function(err) {
-        console.log(err);
-      });
+    fetch('data', {
+        method: 'get'
+      }).then(res => res.text())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+    const data = new FormData();
+    data.append("json", JSON.stringify({
+      name: 'zhao'
+    }));
+    fetch('data', {
+        method: 'post',
+        body: data
+      }).then(res => res.text())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   </script>
 </body>
+
 </html>
