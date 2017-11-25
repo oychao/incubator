@@ -22,7 +22,7 @@
     data.set('name', 'Ouyang');
     fetch('datap', {
         method: 'post',
-        body: data
+        body: 'name=test'
       }).then(res => res.text())
       .then(data => console.log(data))
       .catch(err => console.log(err));
