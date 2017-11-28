@@ -14,11 +14,16 @@ module.exports = {
     rules: [{
       test: /\.css$/,
       use: [{
+        loader: path.resolve(__dirname, 'tools', 'test-loader')
+      }, {
         loader: 'style-loader'
       }, {
         loader: 'css-loader'
-      }, {
-        loader: path.resolve(__dirname, 'tools', 'test-loader')
+      }]
+    }, {
+      test: /\.txt$/,
+      use: [{
+        loader: path.resolve(__dirname, 'tools', 'txt-loader')
       }]
     }]
   },

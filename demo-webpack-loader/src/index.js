@@ -1,3 +1,4 @@
 import './style.css';
+import { content } from './test.txt';
 
-document.write('Hello World');
+document.write(content);
