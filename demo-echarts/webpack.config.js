@@ -17,6 +17,15 @@ module.exports = {
       defaultAttribute: 'defer'
     })
   ],
+  resolve: {
+    extensions: ['.js', '.json', '.css']
+  },
+  module: {
+    loaders: [{
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }]
+  },
   externals: {
     echarts: 'echarts'
   },
