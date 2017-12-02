@@ -31,15 +31,6 @@ const option = {
     },
     selectedMode: 'single'
   },
-  // visualMap: {
-  //     show: true,
-  //     min: 0,
-  //     max: 20,
-  //     dimension: 6,
-  //     inRange: {
-  //         colorLightness: [0.5, 0.8]
-  //     }
-  // },
   radar: {
     indicator: [
       { name: 'AQI', max: 300 },
