@@ -3,7 +3,11 @@ class HelloWorldPlugin {
     console.log(props);
   }
 
-  apply(compipler) {}
+  apply(compiler) {
+    compiler.plugin('done', (compilation) => {
+      console.log('plugin, done');
+    });
+  }
 }
 
 module.exports = HelloWorldPlugin;
