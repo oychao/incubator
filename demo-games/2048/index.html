@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		html,body {
+			margin: 0px;
+			height: 100%;
+		}
+		#game {
+			cursor: default;
+			user-select: none;
+			font-family: "Clear Sans", "Helvetica Neue", Arial, sans-seri;
+			text-align: center;
+			font-size: 55px;
+			font-weight: bold;
+			float: left;
+			padding: 6px;
+			width: 448px;
+			height: 448px;
+			background-color: #bbada0;
+			position: relative;
+		}
+		.game2048-grid-container {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+		.game2048-grid {
+			float: left;
+			margin: 6px;
+			width: 100px;
+			height: 100px;
+			background-color: rgba(238, 228, 218, 0.35);
+			line-height: 100px;
+			position: relative;
+		}
+		.game2048-tablets-container {
+			position: absolute;
+			height: calc(100% - 12px);
+			width: calc(100% - 12px);
+		}
+		.game2048-tablet {
+			height: 100px;
+			width: 100px;
+			line-height: 100px;
+			position: absolute;
+			transition: all .3s ease-out;
+		}
+		.game2048-tablet-new {
+			animation: tablet-new .1s;
+		}
+		@keyframes tablet-new {
+			from {
+				transform: scale(.1);
+			}
+			to {
+				transform: scale(1);
+			}
+		}
+		.game2048-tablet-2 {
+			background-color: #eee4da;
+			color: #776e68;
+		}
+		.game2048-tablet-4 {
+			background-color: #ede0c8;
+			color: #776e68;
+		}
+		.game2048-tablet-8 {
+			background-color: #f2b179;
+			color: #f9f6f2;
+		}
+		.game2048-tablet-16 {
+			background-color: #f59563;
+			color: #f9f6f2;
+		}
+		.game2048-tablet-32 {
+			background-color: #f67c5f;
+			color: #f9f6f2;
+		}
+		.game2048-tablet-64 {
+			background-color: #f65e3b;
+			color: #f9f6f2;
+		}
+		.game2048-tablet-128 {
+			background-color: #edcf72;
+			color: #f9f6f2;
+		}
+		.game2048-pos-0-0 {
+			left: 6px;
+			top: 6px;
+		}
+		.game2048-pos-0-1 {
+			left: 118px;
+			top: 6px;
+		}
+		.game2048-pos-0-2 {
+			left: 230px;
+			top: 6px;
+		}
+		.game2048-pos-0-3 {
+			left: 342px;
+			top: 6px;
+		}
+		.game2048-pos-1-0 {
+			left: 6px;
+			top: 118px;
+		}
+		.game2048-pos-1-1 {
+			left: 118px;
+			top: 118px;
+		}
+		.game2048-pos-1-2 {
+			left: 230px;
+			top: 118px;
+		}
+		.game2048-pos-1-3 {
+			left: 342px;
+			top: 118px;
+		}
+		.game2048-pos-2-0 {
+			left: 6px;
+			top: 230px;
+		}
+		.game2048-pos-2-1 {
+			left: 118px;
+			top: 230px;
+		}
+		.game2048-pos-2-2 {
+			left: 230px;
+			top: 230px;
+		}
+		.game2048-pos-2-3 {
+			left: 342px;
+			top: 230px;
+		}
+		.game2048-pos-3-0 {
+			left: 6px;
+			top: 342px;
+		}
+		.game2048-pos-3-1 {
+			left: 118px;
+			top: 342px;
+		}
+		.game2048-pos-3-2 {
+			left: 230px;
+			top: 342px;
+		}
+		.game2048-pos-3-3 {
+			left: 342px;
+			top: 342px;
+		}
+	</style>
+</head>
+<body>
+	<div id="game"></div>
+	<script src="./assets/2048.js"></script>
+	<script type="text/javascript">
+		var game = game2048('#game');
+	</script>
+</body>
+</html>

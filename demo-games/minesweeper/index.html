@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./assets/minesweeper.css">
+	<style type="text/css">
+		#game {
+			position: relative;
+			top: 50px;
+			margin: 0px auto;
+		}
+		#title {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="title">扫雷</h1>
+	<div style="text-align: center;">
+		<button id="btnStart1">初级</button>
+		<button id="btnStart2">中级</button>
+		<button id="btnStart3">高级</button>
+	</div>
+	<div id="game"></div>
+	<script src="./assets/minesweeper.js"></script>
+	<script type="text/javascript">
+		var ms = minesweeper('#game', {
+			onVictory: function() {
+				document.getElementById('title').textContent = 'Victory!!!';
+			},
+			onFail: function() {
+				document.getElementById('title').textContent = 'Failed!!!';
+			}
+		});
+
+		document.getElementById('btnStart1').addEventListener('click', function(e) {
+			ms.start(10, 10);
+		});
+		document.getElementById('btnStart2').addEventListener('click', function(e) {
+			ms.start(20, 40);
+		});
+		document.getElementById('btnStart3').addEventListener('click', function(e) {
+			ms.start(30, 120);
+		});
+	</script>
+</body>
+</html>

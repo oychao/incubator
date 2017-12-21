@@ -1,0 +1,33 @@
+html,body {
+	margin: 0px;
+}
+.square {
+	float: left;
+	width: 18px;
+	height: 18px;
+	background-color: lightgrey;
+	border: 1px solid grey;
+	cursor: default;
+	user-select: none;
+	text-align: center;
+	font-size: 12px;
+	line-height: 18px;
+	animation-fill-mode: forwards;
+	transition: all .5s;
+	color: #333;
+}
+.explored {
+	background-color: white;
+	border-style: dashed;
+}
+.flagged {
+	background-color: green;
+}
+@keyframes explode {
+	from {
+		background-color: white;
+	}
+	to {
+		background-color: red;
+	}
+}
