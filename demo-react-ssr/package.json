@@ -1,0 +1,25 @@
+{
+  "name": "demo-react-ssr",
+  "version": "1.0.0",
+  "description": "React SSR Demo",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "node bin.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "express": "^4.16.4",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  }
+}
