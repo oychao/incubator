@@ -1,6 +1,6 @@
 import echarts from 'echarts';
 
-import data from './data.json';
+import data from './data';
 import './style.css';
 
 const myChart = echarts.init(document.querySelector('#main'));
