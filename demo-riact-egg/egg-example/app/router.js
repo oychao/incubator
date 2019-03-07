@@ -5,7 +5,7 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/api', controller.home.index);
+  router.get('/', controller.home.index);
   router.get('/api/todo', controller.todo.all);
   router.post('/api/todo', controller.todo.post);
   router.delete('/api/todo', controller.todo.delete);
