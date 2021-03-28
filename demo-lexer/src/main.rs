@@ -6,7 +6,12 @@ use lexers::token::Token;
 use lexers::tokenizer::TOKENIZER_LIST;
 
 fn main() {
-  let text = " 12 + 23 ";
+  let text = "struct TradeReport {
+    1: string  symbol
+    2: double  price
+    3: i32     size
+    4: i32     seq_num
+  }";
   let mut prev_offset: usize = 0;
   let mut token_name = "";
 
@@ -30,11 +35,4 @@ fn main() {
       break;
     }
   }
-
-  println!(
-    "{} {} {}",
-    result.get(0).unwrap().value,
-    result.get(1).unwrap().value,
-    result.get(2).unwrap().value
-  )
 }

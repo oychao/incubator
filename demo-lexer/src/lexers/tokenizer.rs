@@ -35,8 +35,16 @@ impl<'a> Tokenizer<'a> {
 }
 
 lazy_static! {
-  pub static ref TOKENIZER_LIST: [Tokenizer<'static>; 3] = [
+  pub static ref TOKENIZER_LIST: [Tokenizer<'static>; 11] = [
+    Tokenizer::new(Regex::new(r"^struct").unwrap(), "TokenStruct"),
+    Tokenizer::new(Regex::new(r"^\{").unwrap(), "TokenLeftBracket"),
+    Tokenizer::new(Regex::new(r"^\}").unwrap(), "TokenRightBracket"),
+    Tokenizer::new(Regex::new(r"^\d+:").unwrap(), "TokenStructIndex"),
     Tokenizer::new(Regex::new(r"^\d+").unwrap(), "TokenNumber"),
+    Tokenizer::new(Regex::new(r"^string").unwrap(), "TokenStringType"),
+    Tokenizer::new(Regex::new(r"^double").unwrap(), "TokenDoubleType"),
+    Tokenizer::new(Regex::new(r"^i32").unwrap(), "TokenI32Type"),
+    Tokenizer::new(Regex::new(r"^\w+").unwrap(), "TokenStringLiteral"),
     Tokenizer::new(Regex::new(r"^[\+\-\*/]{1}").unwrap(), "TokenOperation"),
     Tokenizer::new(Regex::new(r"()$").unwrap(), "TokenEnd")
   ];
