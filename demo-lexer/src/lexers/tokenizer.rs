@@ -1,6 +1,6 @@
 extern crate regex;
 
-use crate::token::Token;
+use super::token::Token;
 use regex::Regex;
 
 #[derive(Debug)]

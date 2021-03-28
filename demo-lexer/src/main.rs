@@ -1,22 +1,22 @@
-mod token;
-mod tokenizer;
+mod lexers;
 
 extern crate regex;
 
+use lexers::token::Token;
+use lexers::tokenizer::Tokenizer;
 use regex::Regex;
 
 fn main() {
-  let tokenizer_number = tokenizer::Tokenizer::new(Regex::new(r"^\d+").unwrap(), "TokenNumber");
-  let tokenizer_operation =
-    tokenizer::Tokenizer::new(Regex::new(r"^[\+\-\*/]{1}").unwrap(), "TokenOperation");
-  let tokenizer_end = tokenizer::Tokenizer::new(Regex::new(r"()$").unwrap(), "TokenEnd");
+  let tokenizer_number = Tokenizer::new(Regex::new(r"^\d+").unwrap(), "TokenNumber");
+  let tokenizer_operation = Tokenizer::new(Regex::new(r"^[\+\-\*/]{1}").unwrap(), "TokenOperation");
+  let tokenizer_end = Tokenizer::new(Regex::new(r"()$").unwrap(), "TokenEnd");
 
   let tokenizers = [tokenizer_number, tokenizer_operation, tokenizer_end];
   let text = " 12 + 23 ";
   let mut prev_offset: usize = 0;
   let mut token_name = "";
 
-  let mut result: Vec<token::Token> = Vec::new();
+  let mut result: Vec<Token> = Vec::new();
 
   loop {
     for (_, tokenizer) in tokenizers.iter().enumerate() {
