@@ -1,6 +1,7 @@
 extern crate regex;
 
 use super::token::Token;
+use lazy_static::lazy_static;
 use regex::Regex;
 
 #[derive(Debug)]
@@ -31,4 +32,12 @@ impl<'a> Tokenizer<'a> {
       Token::new("NotMatched", "", actual_offset, actual_offset)
     }
   }
+}
+
+lazy_static! {
+  pub static ref TOKENIZER_LIST: [Tokenizer<'static>; 3] = [
+    Tokenizer::new(Regex::new(r"^\d+").unwrap(), "TokenNumber"),
+    Tokenizer::new(Regex::new(r"^[\+\-\*/]{1}").unwrap(), "TokenOperation"),
+    Tokenizer::new(Regex::new(r"()$").unwrap(), "TokenEnd")
+  ];
 }
