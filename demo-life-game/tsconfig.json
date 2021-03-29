@@ -15,5 +15,6 @@
     "sourceMap": true,
     "target": "es6"
   },
-  "include": ["./src/**/*", "../bin/**/*"]
+  "include": ["./src/**/*", "../bin/**/*"],
+  "exclude": ["*.js"]
 }
