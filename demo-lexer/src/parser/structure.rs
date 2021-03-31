@@ -1,6 +1,4 @@
 use crate::lexer::tokenizer::TOKEN_DECLARATION;
-use crate::lexer::tokenizer::TOKEN_LIST_TYPE;
-use crate::lexer::tokenizer::TOKEN_MAP_TYPE;
 use crate::lexer::tokenizer::TOKEN_OPTIONAL;
 use crate::lexer::tokenizer::TOKEN_REQUIRED;
 use crate::lexer::tokenizer::TOKEN_RIGHT_ANGLE_BRACKET;
@@ -9,6 +7,10 @@ use crate::lexer::tokenizer::TOKEN_STRUCT_PROPERTY_INDEX;
 use crate::parser::common::ComponentBase;
 use crate::parser::common::ComponentBehavior;
 use crate::parser::common::WalkerStep;
+use crate::parser::types::basic::BasicType;
+use crate::parser::types::list::ListType;
+use crate::parser::types::map::MapType;
+use crate::parser::types::CommonType;
 use crate::parser::TOKEN_STRUCT;
 use crate::Token;
 
@@ -70,25 +72,25 @@ impl<'a> ComponentBehavior<'a> for Structure<'a> {
         cur = ComponentBase::read_next_token(token_list, cur.index);
       }
 
-      match cur.token.name {
-        TOKEN_LIST_TYPE => {
-          property.s_type = cur.token.value.clone();
-          while TOKEN_RIGHT_ANGLE_BRACKET != cur.token.name {
-            cur = ComponentBase::read_next_token(token_list, cur.index);
-          }
+      if ListType::is_start_condition_matched(cur.token) {
+        let common_type = CommonType::init(token_list, cur.index);
+        property.s_type = common_type.parse();
+        cur = ComponentBase::read_next_token(token_list, common_type.base.end);
+      } else if MapType::is_start_condition_matched(cur.token) {
+        property.s_type = cur.token.value.clone();
+        while TOKEN_RIGHT_ANGLE_BRACKET != cur.token.name {
+          cur = ComponentBase::read_next_token(token_list, cur.index);
         }
-        TOKEN_MAP_TYPE => {
-          property.s_type = cur.token.value.clone();
-          while TOKEN_RIGHT_ANGLE_BRACKET != cur.token.name {
-            cur = ComponentBase::read_next_token(token_list, cur.index);
-          }
-        }
-        _ => {
-          property.s_type = cur.token.value.clone();
-        }
-      };
+        cur = ComponentBase::read_next_token(token_list, cur.index);
+      } else if BasicType::is_start_condition_matched(cur.token) {
+        let common_type = CommonType::init(token_list, cur.index);
+        assert_eq!(cur.index, common_type.base.end);
+        property.s_type = common_type.parse();
+        cur = ComponentBase::read_next_token(token_list, common_type.base.end);
+      } else {
+        // error
+      }
 
-      cur = ComponentBase::read_next_token(token_list, cur.index);
       assert_eq!(TOKEN_DECLARATION, cur.token.name);
 
       property.value = cur.token.value.as_str();

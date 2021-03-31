@@ -1,3 +1,4 @@
+pub mod types;
 pub mod common;
 pub mod constant;
 pub mod enumeration;
