@@ -1,7 +1,11 @@
+use crate::lexer::tokenizer::TOKEN_COMMA;
+use crate::lexer::tokenizer::TOKEN_LEFT_ANGLE_BRACKET;
 use crate::lexer::tokenizer::TOKEN_MAP_TYPE;
 use crate::lexer::tokenizer::TOKEN_RIGHT_ANGLE_BRACKET;
+use crate::lexer::tokenizer::TOKEN_STRING_TYPE;
 use crate::parser::common::ComponentBase;
 use crate::parser::common::WalkerStep;
+use crate::parser::types::CommonType;
 use crate::parser::ComponentBehavior;
 use crate::Token;
 
@@ -23,18 +27,32 @@ impl<'a> ComponentBehavior<'a> for MapType<'a> {
       // error
     }
 
+    let mut value: String = String::from("");
+
     cur = ComponentBase::read_next_token(token_list, cur.index);
+    assert_eq!(TOKEN_LEFT_ANGLE_BRACKET, cur.token.name);
+
+    cur = ComponentBase::read_next_token(token_list, cur.index);
+    assert_eq!(TOKEN_STRING_TYPE, cur.token.name);
+
+    cur = ComponentBase::read_next_token(token_list, cur.index);
+    assert_eq!(TOKEN_COMMA, cur.token.name);
+
+    cur = ComponentBase::read_next_token(token_list, cur.index);
+
+    let common_type = CommonType::init(token_list, cur.index);
+    value.push_str(&common_type.parse().as_str());
+
+    cur = ComponentBase::read_next_token(token_list, common_type.base.end);
+    assert_eq!(TOKEN_RIGHT_ANGLE_BRACKET, cur.token.name);
 
     let base = ComponentBase {
       token_list,
       start,
-      end: start,
+      end: cur.index,
     };
 
-    MapType {
-      base,
-      value: cur.token.value.clone(),
-    }
+    MapType { base, value }
   }
 
   fn is_start_condition_matched(token: &Token) -> bool {
@@ -50,6 +68,6 @@ impl<'a> ComponentBehavior<'a> for MapType<'a> {
   }
 
   fn parse(&self) -> String {
-    String::from(&self.value)
+    format!("map<string, {}>", &self.value)
   }
 }

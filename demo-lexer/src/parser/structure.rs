@@ -1,7 +1,6 @@
 use crate::lexer::tokenizer::TOKEN_DECLARATION;
 use crate::lexer::tokenizer::TOKEN_OPTIONAL;
 use crate::lexer::tokenizer::TOKEN_REQUIRED;
-use crate::lexer::tokenizer::TOKEN_RIGHT_ANGLE_BRACKET;
 use crate::lexer::tokenizer::TOKEN_RIGHT_BRACKET;
 use crate::lexer::tokenizer::TOKEN_STRUCT_PROPERTY_INDEX;
 use crate::parser::common::ComponentBase;
@@ -77,11 +76,9 @@ impl<'a> ComponentBehavior<'a> for Structure<'a> {
         property.s_type = common_type.parse();
         cur = ComponentBase::read_next_token(token_list, common_type.base.end);
       } else if MapType::is_start_condition_matched(cur.token) {
-        property.s_type = cur.token.value.clone();
-        while TOKEN_RIGHT_ANGLE_BRACKET != cur.token.name {
-          cur = ComponentBase::read_next_token(token_list, cur.index);
-        }
-        cur = ComponentBase::read_next_token(token_list, cur.index);
+        let common_type = CommonType::init(token_list, cur.index);
+        property.s_type = common_type.parse();
+        cur = ComponentBase::read_next_token(token_list, common_type.base.end);
       } else if BasicType::is_start_condition_matched(cur.token) {
         let common_type = CommonType::init(token_list, cur.index);
         assert_eq!(cur.index, common_type.base.end);

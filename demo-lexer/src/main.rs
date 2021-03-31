@@ -29,7 +29,7 @@ fn main() {
     3: optional i32     size
     4: optional i32     seq_num
     5: optional list<string> paths
-    6: required map<string, bool> detail
+    6: required map<string, list<map<string, bool>>> detail
   }
 
   struct JanusOpenApiDelFlowDividerReq {
