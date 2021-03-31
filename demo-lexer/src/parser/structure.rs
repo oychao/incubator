@@ -45,9 +45,7 @@ impl<'a> ComponentBehavior<'a> for Structure<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !Structure::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(Structure::is_start_condition_matched(cur.token), true);
 
     cur = ComponentBase::read_next_token(token_list, cur.index);
 

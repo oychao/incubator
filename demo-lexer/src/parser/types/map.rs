@@ -23,9 +23,7 @@ impl<'a> ComponentBehavior<'a> for MapType<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !MapType::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(MapType::is_start_condition_matched(cur.token), true);
 
     let mut value: String = String::from("");
 

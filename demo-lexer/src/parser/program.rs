@@ -21,9 +21,7 @@ impl<'a> ComponentBehavior<'a> for Program<'a> {
       token: token_list.get(start).unwrap(),
     };
 
-    if !Program::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(Program::is_start_condition_matched(cur.token), true);
 
     while !Program::is_end_condition_matched(cur.token) {
       if Namespace::is_start_condition_matched(cur.token) {

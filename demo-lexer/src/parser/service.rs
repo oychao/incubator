@@ -17,9 +17,7 @@ impl<'a> ComponentBehavior<'a> for Service<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !Service::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(Service::is_start_condition_matched(cur.token), true);
 
     while !Service::is_end_condition_matched(cur.token) {
       cur = ComponentBase::read_next_token(token_list, cur.index);

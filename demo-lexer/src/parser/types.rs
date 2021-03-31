@@ -23,9 +23,7 @@ impl<'a> ComponentBehavior<'a> for CommonType<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !CommonType::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(CommonType::is_start_condition_matched(cur.token), true);
 
     let mut end: usize = start;
 

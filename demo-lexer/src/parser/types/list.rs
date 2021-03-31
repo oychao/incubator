@@ -21,9 +21,7 @@ impl<'a> ComponentBehavior<'a> for ListType<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !ListType::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(ListType::is_start_condition_matched(cur.token), true);
 
     let mut value: String = String::from("");
 

@@ -21,9 +21,7 @@ impl<'a> ComponentBehavior<'a> for BasicType<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !BasicType::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(BasicType::is_start_condition_matched(cur.token), true);
 
     let base = ComponentBase {
       token_list,

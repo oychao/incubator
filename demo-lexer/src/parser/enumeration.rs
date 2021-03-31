@@ -35,9 +35,7 @@ impl<'a> ComponentBehavior<'a> for Enumeration<'a> {
       token: token_list.get(start).unwrap(),
     };
 
-    if !Enumeration::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(Enumeration::is_start_condition_matched(cur.token), true);
 
     cur = ComponentBase::read_next_token(token_list, cur.index);
     assert_eq!(cur.token.name, TOKEN_DECLARATION);

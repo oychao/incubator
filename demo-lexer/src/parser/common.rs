@@ -25,7 +25,6 @@ impl<'a> ComponentBase<'a> {
   // }
 
   pub fn read_next_token(token_list: &'a Vec<Token>, i: usize) -> WalkerStep {
-    // println!("{}", i);
     let step = WalkerStep {
       index: i + 1,
       token: token_list.get(i + 1).unwrap(),

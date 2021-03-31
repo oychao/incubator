@@ -17,9 +17,7 @@ impl<'a> ComponentBehavior<'a> for Constant<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !Constant::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(Constant::is_start_condition_matched(cur.token), true);
 
     cur = ComponentBase::read_next_token(token_list, cur.index);
 

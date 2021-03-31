@@ -17,9 +17,7 @@ impl<'a> ComponentBehavior<'a> for Namespace<'a> {
     };
     // println!("namespace: {:?}", cur);
 
-    if !Namespace::is_start_condition_matched(cur.token) {
-      // error
-    }
+    assert_eq!(Namespace::is_start_condition_matched(cur.token), true);
 
     cur = ComponentBase::read_next_token(token_list, cur.index);
 
