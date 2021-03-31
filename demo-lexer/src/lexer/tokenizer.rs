@@ -69,7 +69,10 @@ pub const TOKEN_STRING_TYPE: &str = "TOKEN_STRING_TYPE";
 pub const TOKEN_LIST_TYPE: &str = "TOKEN_LIST_TYPE";
 pub const TOKEN_MAP_TYPE: &str = "TOKEN_MAP_TYPE";
 pub const TOKEN_DOUBLE_TYPE: &str = "TOKEN_DOUBLE_TYPE";
+pub const TOKEN_I8_TYPE: &str = "TOKEN_I8_TYPE";
+pub const TOKEN_I16_TYPE: &str = "TOKEN_I16_TYPE";
 pub const TOKEN_I32_TYPE: &str = "TOKEN_I32_TYPE";
+pub const TOKEN_I64_TYPE: &str = "TOKEN_I64_TYPE";
 pub const TOKEN_STRUCT_PROPERTY_INDEX: &str = "TOKEN_STRUCT_PROPERTY_INDEX";
 pub const TOKEN_NUMBER: &str = "TOKEN_NUMBER";
 pub const TOKEN_DECLARATION: &str = "TOKEN_DECLARATION";
@@ -78,7 +81,7 @@ pub const TOKEN_END: &str = "TOKEN_END";
 pub const NOT_MATCHED: &str = "NOT_MATCHED";
 
 lazy_static! {
-  pub static ref TOKENIZER_LIST: [Tokenizer; 30] = [
+  pub static ref TOKENIZER_LIST: [Tokenizer; 33] = [
     Tokenizer::new(Regex::new(r"^//.{0,}").unwrap(), COMMENT_PART),
     Tokenizer::new(Regex::new(r#"^"[^"]{0,}""#).unwrap(), TOKEN_STRING_LITERAL),
     Tokenizer::new(Regex::new(r"^namespace").unwrap(), TOKEN_NAMESPACE),
@@ -103,7 +106,10 @@ lazy_static! {
     Tokenizer::new(Regex::new(r"^list").unwrap(), TOKEN_LIST_TYPE),
     Tokenizer::new(Regex::new(r"^map").unwrap(), TOKEN_MAP_TYPE),
     Tokenizer::new(Regex::new(r"^double").unwrap(), TOKEN_DOUBLE_TYPE),
-    Tokenizer::new(Regex::new(r"^i32").unwrap(), TOKEN_I32_TYPE),
+    Tokenizer::new(Regex::new(r"^i8").unwrap(), TOKEN_I8_TYPE),
+    Tokenizer::new(Regex::new(r"^i32").unwrap(), TOKEN_I16_TYPE),
+    Tokenizer::new(Regex::new(r"^i16").unwrap(), TOKEN_I32_TYPE),
+    Tokenizer::new(Regex::new(r"^i64").unwrap(), TOKEN_I64_TYPE),
     Tokenizer::new(Regex::new(r"^\d+:").unwrap(), TOKEN_STRUCT_PROPERTY_INDEX),
     Tokenizer::new(Regex::new(r"^\d+").unwrap(), TOKEN_NUMBER),
     Tokenizer::new(Regex::new(r"^[\w]+").unwrap(), TOKEN_DECLARATION),
