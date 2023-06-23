@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "baseUrl": "src",
+    "outDir": "bin",
+    "sourceMap": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["es7", "dom"],
+    "jsx": "react",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "paths": {
+      "*": ["*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "importHelpers": true,
+    "strictNullChecks": false,
+    "noUnusedLocals": true,
+    "declaration": true,
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ]
+  },
+  "exclude": ["node_modules", "*.js", "bin/*.d.ts", "demo"],
+  "typeRoots": ["node", "node_modules/@types", "./typings"]
+}

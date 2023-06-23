@@ -7,7 +7,6 @@ target
 .happypack
 *.swp
 dist
-.vscode
 demo-jersey/target
 demo-jersey/demo-jersey.iml
 __pycache__
